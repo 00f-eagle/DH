@@ -8,7 +8,7 @@ public class Bob {
     private BigInteger p;
     private BigInteger g;
 
-    private int b;
+    private BigInteger b;
 
 
     Bob(BigInteger p, BigInteger g){
@@ -19,14 +19,14 @@ public class Bob {
         Scanner in = new Scanner(System.in);
 
         System.out.println("Введите любое число (b - private):");
-        b = in.nextInt();
+        b = in.nextBigInteger();
 
-        B = g.pow(b).mod(p);
+        B = g.modPow(b, p);
     }
 
     public void Key(BigInteger A){
 
-        BigInteger K = A.pow(b).mod(p);;
+        BigInteger K = A.modPow(b, p);
 
         System.out.println("Key Bob: " + K);
 

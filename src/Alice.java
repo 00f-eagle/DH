@@ -9,20 +9,21 @@ public class Alice {
     public BigInteger g;
     public BigInteger A;
 
-    private int a;
+    private BigInteger a;
 
     Alice(){
 
         p = RandomGenerate(63);
 
-        g = RandomGenerate(8);
+        g = RandomGenerate(63);
 
         Scanner in = new Scanner(System.in);
 
         System.out.println("Введите любое число (a - private):");
-        a = in.nextInt();
 
-        A = g.pow(a).mod(p);
+        a = in.nextBigInteger();
+
+        A = g.modPow(a,p);
 
     }
 
@@ -46,7 +47,8 @@ public class Alice {
 
     public void Key(BigInteger B){
 
-        BigInteger K = B.pow(a).mod(p);;
+
+        BigInteger K = B.modPow(a,p);
 
         System.out.println("Key Alice: " + K);
 
